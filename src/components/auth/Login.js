@@ -24,7 +24,7 @@ export default function Login() {
                 name,password
             };
             console.log(loginData);
-            await axios.post("http://localhost:5000/auth/login", loginData);
+            await axios.post("https://zomely.onrender.com/auth/login", loginData);
             getloggedIn();
             navigate("/");
 

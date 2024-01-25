@@ -8,7 +8,7 @@ export default function LinkList() {
   const[links ,setLinks] = useState([])
 
   useEffect(() =>{
-    axios.get("http://localhost:5000/short/")
+    axios.get("https://zomely.onrender.com/short/")
     .then((d) => {
       setLinks(d.data)
     })

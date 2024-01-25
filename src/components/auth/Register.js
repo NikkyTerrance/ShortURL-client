@@ -24,7 +24,7 @@ export default function Register() {
                 name,password,passwordverify
             };
             console.log(registerData);
-            await axios.post("http://localhost:5000/auth/", registerData);
+            await axios.post("https://zomely.onrender.com/auth/", registerData);
             getloggedIn();
             navigate("/");
 

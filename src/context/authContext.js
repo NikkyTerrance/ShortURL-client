@@ -7,7 +7,8 @@ function AuthContextProvider(props) {
     const [loggedIn, setloggedIn] = useState(undefined);
 
     async function getloggedIn (){
-        const loggedInRes = await axios.get("http://localhost:5000/auth/loggedin");
+        const loggedInRes = await axios.get("https://zomely.onrender.com/auth/loggedin");
+
         setloggedIn(loggedInRes.data);
     }
 
