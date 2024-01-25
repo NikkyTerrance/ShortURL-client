@@ -1,0 +1,29 @@
+.tblbox{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-20%);
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    width: min(900px, 100% -3rem);
+    align-items: center;
+    justify-content: center;
+}
+
+.tdf {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    max-width: 0;
+    white-space: nowrap;
+}
+.tbl {
+    width: 500px;
+}
+
+@media screen and (max-width: 600px) {
+    .tbl {
+        width: 300px;
+    }
+}
