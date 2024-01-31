@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import AuthContext from '../../context/authContext'
 import  { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import './Login.css';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function Login() {
@@ -16,22 +17,39 @@ export default function Login() {
     const navigate = useNavigate();
 
 
-
     async function login(e){
         e.preventDefault();
         try{
             const loginData ={
                 name,password
             };
+
+            let res = {}
             console.log(loginData);
-            await axios.post("https://zomely.onrender.com/auth/login", loginData);
-            getloggedIn();
-            navigate("/");
+            //await axios.post("https://zomely.onrender.com/auth/login", loginData);
+            await axios.post("http://localhost:5000/auth/login", loginData, res)
+                getloggedIn();
+                navigate("/");
 
 
         }
-        catch(err){
-            console.error(err);
+        catch(error){
+            console.error(error);
+            const ee = JSON.stringify(error.response.data.errorMessage, null, 2);
+            toast.error(ee, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                });
+            
+            // alert(ee);
+            
+            
         }
     }
 
@@ -49,6 +67,7 @@ export default function Login() {
                 
                 <button className='button' type='submit'>Login</button>
             </form>
+            <ToastContainer />
         </div>
     )
 }

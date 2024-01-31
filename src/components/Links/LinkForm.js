@@ -13,7 +13,10 @@ async function saveLink(e) {
         const linkData = {
             fullURL: fullURL
         }
-        await axios.post("https://zomely.onrender.com/short/", linkData)
+        //await axios.post("https://zomely.onrender.com/short/", linkData)
+        await axios.post("http://localhost:5000/short/", linkData)
+        window.location.reload();
+
     }
     catch(err){
         console.error(err);

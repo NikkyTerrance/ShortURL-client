@@ -4,6 +4,8 @@ import AuthContext from '../../context/authContext'
 import  { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import './Register.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -24,7 +26,9 @@ export default function Register() {
                 name,password,passwordverify
             };
             console.log(registerData);
-            await axios.post("https://zomely.onrender.com/auth/", registerData);
+            //await axios.post("https://zomely.onrender.com/auth/", registerData);
+            await axios.post("http://localhost:5000/auth/", registerData);
+
             getloggedIn();
             navigate("/");
 
@@ -32,6 +36,17 @@ export default function Register() {
         }
         catch(err){
             console.error(err);
+            const ee = JSON.stringify(err.response.data.errorMessage, null, 2);
+            toast.error(ee, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "light",
+                });
         }
     }
 
@@ -51,6 +66,9 @@ export default function Register() {
                     value={passwordverify} />
                 <button className='button' type='submit'>Register</button>
             </form>
+
+            <ToastContainer />
+
         </div>
     )
 }

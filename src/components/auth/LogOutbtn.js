@@ -15,7 +15,9 @@ export default function LogOutBtn() {
 
     
     async function logOut() {
-        await axios.get("https://zomely.onrender.com/auth/logout");
+        //await axios.get("https://zomely.onrender.com/auth/logout");
+        await axios.get("http://localhost:5000/auth/logout");
+
         await getloggedIn();
         navigate("/");
 
