@@ -6,8 +6,8 @@ export default async function Redirect() {
     const params = useParams()
     const short = params.shortUrl
     console.log(short)
-    //const url = ("https://zomely.onrender.com/short/"+short)
-    const url = ("http://localhost:5000/short/"+short)
+    const url = ("https://zomely.onrender.com/short/"+short)
+    // const url = ("http://localhost:5000/short/"+short)
 
     console.log(url)
     let response = await axios.get(url)
